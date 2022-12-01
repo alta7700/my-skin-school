@@ -1,0 +1,17 @@
+version: "3.100"
+
+
+services:
+  db:
+    image: postgres:14.6
+    container_name: derma-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - TZ=Europe/Moscow
+      - PGTZ=Europe/Moscow
+    volumes:
+      - D:\Projects\derma\school\data\pg:/var/lib/postgresql/data
+    ports:
+      - "2345:5432"

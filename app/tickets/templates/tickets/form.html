@@ -1,0 +1,10 @@
+<div class="footer-questions">
+    <span class="footer-questions-title">Есть вопросы? Задавайте!</span>
+    <form id="footer-questions-form">
+        {% for field in ticket_form %}{{ field }}{% endfor %}
+        {% csrf_token %}
+        <button type="submit">
+            <img src="/static/images/footer-submit-arrow.png" alt="Submit" height="35px" width="35px">
+        </button>
+    </form>
+</div>

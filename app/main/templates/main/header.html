@@ -1,0 +1,13 @@
+<header>
+    <div class="header-container">
+        <div class="header-container-content">
+            {% for title, url in navbar_history.items %}
+                <a class='nav-link' href="{{ url }}">{{ title }}</a>
+                <span class='nav-delimiter'> / </span>
+            {% endfor %}
+        </div>
+        <div class="header-container-content">
+            <a class='nav-link' href="#">Личный кабинет</a>
+        </div>
+    </div>
+</header>

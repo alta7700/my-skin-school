@@ -1,0 +1,6 @@
+/app/media/*
+/app/school/.env
+/venv
+/.idea
+/data
+/static

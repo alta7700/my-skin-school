@@ -1,0 +1,21 @@
+{% extends 'main/index.html' %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="schools">
+        {% for school in schools %}
+            <a class="school-item" href="{% url 'school_lessons' school.slug %}">
+                <img src="{{ school.cover.url }}" alt="not found">
+                <span class="school-title">{{ school.title }}</span>
+                <hr>
+                <span class="school-lessons-count">
+                    {% if school.lessons_count %}
+                        Уроков: {{ school.lessons_count }}
+                    {% else %}
+                        В разработке
+                    {% endif %}
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

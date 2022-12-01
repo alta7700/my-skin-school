@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    {{ block.super }}
+    {% if school %}
+        <div class="lessons-list">
+            {% if school.lessons.all %}
+                {% for lesson in school.lessons.all %}
+                    <a class="lessons-list-item" href="{% url 'lesson' school.slug lesson.position %}">
+                        <img src="{{ lesson.cover.url }}" alt="Картинка">
+                        <div class="lessons-list-item-text">
+                            <h1>{{ lesson.title }}</h1>
+                            <h3 class="lessons-list-item-description">{{ lesson.description }}</h3>
+                            <p>Перейти к уроку?</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <div id="vk_podcast"><script type="text/javascript">
+                    VK.Widgets.Podcast('vk_podcast', "-195657049_456239140", "e0e8e0b8f4f417455c");
+                </script></div>
+            {% endif %}
+        </div>
+    {% else %}
+        {% include 'main/not_found.html' %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+
+    <script src="/static/js/main.js"></script>
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/offer.css">
+    <link rel="stylesheet" href="/static/css/schools.css">
+    <link rel="stylesheet" href="/static/css/lesson.css">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div id="app">
+        {% include 'main/header.html' %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        {% include 'main/footer.html' %}
+    </div>
+</body>
+</html>

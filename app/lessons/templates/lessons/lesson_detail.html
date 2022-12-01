@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    {{ block.super }}
+    {% if lesson %}
+        <div class="lesson-detail">
+            <div class="lesson-content-types">
+                {% for content_type_id, content_type, block_id in lesson.get_available_content_types %}
+                    <span id="bnt-{{ block_id }}" class="lesson-content-type" onclick="changeActiveContentBlock('{{ block_id }}')">{{ content_type }}</span>
+                {% endfor %}
+            </div>
+            {% if lesson.videos %}
+                <div id="{{ lesson.main_video.group_block_id }}" class="lesson-block hidden">
+                    {{ lesson.main_video.render }}
+                    <div>
+                        <p>Смотреть на других платформах:</p>
+                        <div class="lesson-remote-urls">
+                            {% for video in lesson.videos %}
+                                {{ video.render_link }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if lesson.audios %}
+                <div id="{{ lesson.main_audio.group_block_id }}" class="lesson-block hidden">
+                    {{ lesson.main_audio.render }}
+                    <div>
+                        <p>Слушать на других платформах:</p>
+                        <div class="lesson-remote-urls">
+                            {% for audio in lesson.audios %}
+                                {{ audio.render_link }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        {% include 'main/not_found.html' %}
+    {% endif %}
+{% endblock %}

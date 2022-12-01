@@ -1,0 +1,51 @@
+.lesson-detail {
+    background: white;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.lesson-content-types {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.lesson-content-types > span {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+
+.lesson-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lesson-remote-urls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+.lesson-remote-urls > a {
+    transition-duration: 0.15s;
+}
+.lesson-remote-urls > a:hover {
+    transform: scale(0.93);
+}
+.lesson-remote-urls > a > img {
+    height: 30px;
+}
+
+.lesson-video {
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16/9;
+}
