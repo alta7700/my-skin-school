@@ -1,5 +1,17 @@
 version: "3.100"
 
+x-school-common: &school-common
+  image: alta7700/my-skin-school
+  environment:
+    - DB_NAME=school
+    - DB_USER=postgres
+    - DB_PASSWORD=$MY_SKIN_SCHOOL_PG_PWD
+    - DB_HOST=db
+    - DB_PORT=5432
+    - POSTGRES_PASSWORD=$MY_SKIN_SCHOOL_PG_PWD
+  volumes:
+    - ${MY_SKIN_DATA_DIR}/static:/usr/src/app/static
+    - ${MY_SKIN_DATA_DIR}/media:/usr/src/app/media
 
 services:
   db:
@@ -8,10 +20,34 @@ services:
     restart: always
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=$MY_SKIN_SCHOOL_PG_PWD
       - TZ=Europe/Moscow
       - PGTZ=Europe/Moscow
     volumes:
-      - D:\Projects\derma\school\data\pg:/var/lib/postgresql/data
+      - ${MY_SKIN_DATA_DIR}/pg:/var/lib/postgresql/data
+
+  school-migrations:
+    <<: *school-common
+    container_name: derma-school-migrations
+    restart: 'no'
+
+  school:
+    <<: *school-common
+    container_name: derma-school
+    restart: always
+    depends_on:
+      - school-migrations
+
+  nginx:
+    image: nginx
+    container_name: derma-nginx
+    restart: always
+    depends_on:
+      - school
     ports:
-      - "2345:5432"
+      - '0.0.0.0:55555:80'
+    volumes:
+      - ${MY_SKIN_DATA_DIR}/nginx/conf.d:/etc/nginx/conf.d:ro
+
+      - ${MY_SKIN_DATA_DIR}/media:/data/media:ro
+      - ${MY_SKIN_DATA_DIR}/static:/data/static:ro
