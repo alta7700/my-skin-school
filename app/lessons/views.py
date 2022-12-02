@@ -9,7 +9,7 @@ class SchoolListView(BaseContextMixin, ListView):
 
     title = 'Школа здоровья'
     context_object_name = 'schools'
-    queryset = School.objects.all().annotate(lessons_count=Count('lessons'))
+    queryset = School.objects.all().annotate(lessons_count=Count('lessons')).order_by('position')
 
     def get_navbar_history(self, **kwargs) -> dict[str, str]:
         return {'Школы здоровья': '#'}
