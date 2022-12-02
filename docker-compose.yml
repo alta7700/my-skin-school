@@ -32,7 +32,7 @@ services:
     <<: *school-common
     container_name: derma-school-migrations
     restart: 'no'
-    entrypoint: migrate-docker.sh
+    entrypoint: bash -c './migrate-docker.sh'
 
   school:
     <<: *school-common
