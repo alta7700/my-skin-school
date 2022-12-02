@@ -8,7 +8,6 @@ x-school-common: &school-common
     - DB_PASSWORD=$MY_SKIN_SCHOOL_PG_PWD
     - DB_HOST=db
     - DB_PORT=5432
-    - POSTGRES_PASSWORD=$MY_SKIN_SCHOOL_PG_PWD
   env_file:
     - ${MY_SKIN_DATA_DIR}/school.env
   volumes:

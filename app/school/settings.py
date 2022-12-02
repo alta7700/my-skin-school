@@ -14,6 +14,7 @@ else:
 
 SECRET_KEY = env['SECRET_KEY']
 DEBUG = env.get('DEBUG', DEBUG_DEFAULT).lower() == 'true'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,8 +28,6 @@ INSTALLED_APPS = [
     'tickets.apps.TicketsConfig',
     'lessons.apps.LessonsConfig',
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
